@@ -1,0 +1,10 @@
+{ 
+	"name": "天凉右键", 
+	"description": "天凉右键", 
+	"version": "0.1", 
+	"permissions": ["contextMenus"], 
+	"background": { 
+		"scripts": ["menu.js"] 
+	}, 
+	"manifest_version": 2 
+} 
