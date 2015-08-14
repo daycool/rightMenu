@@ -49,8 +49,60 @@ function copyFilePath(info, tab){
 
 }
 
-chrome.contextMenus.create({"title": "复制文件路径","contexts":["link","frame"],"onclick":copyFilePath}); 
-chrome.contextMenus.create({"title": "在新窗口中打开iframe","contexts":["link","frame"],"onclick":openNewWindow}); 
-chrome.contextMenus.create({"title": "复制文件名","contexts":["link","frame"],"onclick":copyFileName}); 
-chrome.contextMenus.create({"title": "复制方法名","contexts":["link","frame"],"onclick":copyMethodName}); 
+function clearCache(){
+	chrome.browsingData.removeCache({since:0});
+}
 
+function clearCookie(){
+	chrome.browsingData.removeCookies({since:0});
+}
+function removeLocalStorage(){
+	chrome.browsingData.removeLocalStorage({since:0});
+}
+
+chrome.contextMenus.create({
+	"title": "清除缓存      (Alt+C)",
+	"contexts": ["all"],
+	"onclick": clearCache
+});
+chrome.contextMenus.create({
+	"title": "清除Cookie      (Alt+K)",
+	"contexts": ["all"],
+	"onclick": clearCookie
+});
+chrome.contextMenus.create({
+	"title": "清除LocalStorage      (Alt+L)",
+	"contexts": ["all"],
+	"onclick": removeLocalStorage
+});
+chrome.contextMenus.create({
+	"title": "复制文件路径",
+	"contexts": ["link", "frame"],
+	"onclick": copyFilePath
+});
+chrome.contextMenus.create({
+	"title": "在新窗口中打开iframe",
+	"contexts": ["link", "frame"],
+	"onclick": openNewWindow
+});
+chrome.contextMenus.create({
+	"title": "复制文件名",
+	"contexts": ["link", "frame"],
+	"onclick": copyFileName
+});
+chrome.contextMenus.create({
+	"title": "复制方法名",
+	"contexts": ["link", "frame"],
+	"onclick": copyMethodName
+});
+
+chrome.commands.onCommand.addListener(function(command) {
+	console.log('Command:', command);
+	if(command === 'clearCache'){
+		clearCache();
+	}else if(command === 'clearCookie'){
+		clearCookie();
+	}else if(command === 'clearLocalStrorage'){
+		clearLocalStrorage();
+	}
+});

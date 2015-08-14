@@ -2,9 +2,29 @@
 	"name": "天凉右键", 
 	"description": "天凉右键", 
 	"version": "0.1", 
-	"permissions": ["contextMenus"], 
+	"permissions": ["contextMenus", "browsingData", "commands"], 
 	"background": { 
-		"scripts": ["menu.js"] 
+		"scripts": ["menu.js"]
 	}, 
-	"manifest_version": 2 
+	"manifest_version": 2,
+	"commands": {
+		"clearCache": {
+			"suggested_key": {
+				"windows": "Alt+C"
+			},
+			"description": "清除缓存"
+		},
+		"clearCookie": {
+			"suggested_key": {
+				"windows": "Alt+K"
+			},
+			"description": "清除Cookie"
+		},
+		"clearLocalStrorage": {
+			"suggested_key": {
+				"windows": "Alt+L"
+			},
+			"description": "清除LocalStorage"
+		}
+	}
 } 
