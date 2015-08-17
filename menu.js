@@ -60,6 +60,26 @@ function removeLocalStorage(){
 	chrome.browsingData.removeLocalStorage({since:0});
 }
 
+
+// var port = null; 
+// chrome.runtime.onMessage.addListener(
+//   function(request, sender, sendResponse) {
+//      if (request.type == "launch"){
+//        	connectToNativeHost(request.message);
+//     }
+// 	return true;
+// });
+
+function startNativeApp(){
+	var hostName = 'daycool.native';
+	var port = chrome.runtime.connectNative(hostName);
+}
+
+chrome.contextMenus.create({
+	"title": "启动本地程序      (Alt+N)",
+	"contexts": ["all"],
+	"onclick": startNativeApp
+});
 chrome.contextMenus.create({
 	"title": "清除缓存      (Alt+C)",
 	"contexts": ["all"],
@@ -104,5 +124,7 @@ chrome.commands.onCommand.addListener(function(command) {
 		clearCookie();
 	}else if(command === 'clearLocalStrorage'){
 		clearLocalStrorage();
+	}else if(command === 'startNativeApp'){
+		startNativeApp();
 	}
 });

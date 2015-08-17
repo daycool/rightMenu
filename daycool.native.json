@@ -1,0 +1,10 @@
+{
+	"name": "daycool.native",
+	"description": "tttt",
+	"path": "D:\\my\\chromePlugin\\rightMenu\\startNativeApp.bat",
+	"type": "stdio",
+	"allowed_origins": [
+		"chrome-extension://effmagappjgjfnbfpmpdkcgkdpgmiide/"
+
+	]
+}

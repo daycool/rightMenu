@@ -2,10 +2,14 @@
 	"name": "天凉右键", 
 	"description": "天凉右键", 
 	"version": "0.1", 
-	"permissions": ["contextMenus", "browsingData", "commands"], 
+	"permissions": ["contextMenus", "browsingData", "commands", "nativeMessaging"], 
 	"background": { 
 		"scripts": ["menu.js"]
 	}, 
+	"browser_action": {
+		"default_icon" : "icon.png",
+		"default_popup": "popup.html"
+	},	
 	"manifest_version": 2,
 	"commands": {
 		"clearCache": {
@@ -25,6 +29,12 @@
 				"windows": "Alt+L"
 			},
 			"description": "清除LocalStorage"
+		},
+		"startNativeApp": {
+			"suggested_key": {
+				"windows": "Alt+N"
+			},
+			"description": "启动本地程序"
 		}
 	}
 } 
