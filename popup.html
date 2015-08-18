@@ -8,11 +8,18 @@
 <meta name="keywords" content="">
 <link href="./libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<script src="popup.js"></script>
+<script src="./libs/jquery-2.1.4.min.js"></script>
+<script src="./libs/socket.io-1.3.6.js"></script>
+<link rel="stylesheet" href="./css/popup.css">
 </head>
-<body>
+<body id="my-body">
+	<ul class="list-unstyled actions">
+	  <li><a id="open-document" class="btn btn-primary">打开文档</a></li>
+	  <li><a id="open-dos" class="btn btn-info">打开命令行</a></li>
+	  <li><a id="test-online" class="btn btn-warning">测试上线</a></li>
+	  <li><a id="product-online" class="btn btn-danger">产品上线</a></li>
+	</ul>
 
-    <a id="button1" class="btn btn-primary">启动AltRun</a>
-
+<script src="popup.js"></script>
 </body>
 </html>

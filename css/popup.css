@@ -1,0 +1,9 @@
+ul.actions li{
+	padding: 5px;
+	display: block;
+}
+
+ul.actions a{
+	padding: 5px;
+	display: block;
+}

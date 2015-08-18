@@ -62,24 +62,40 @@ function removeLocalStorage(){
 
 
 // var port = null; 
-// chrome.runtime.onMessage.addListener(
-//   function(request, sender, sendResponse) {
-//      if (request.type == "launch"){
-//        	connectToNativeHost(request.message);
-//     }
-// 	return true;
-// });
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+     if (request.type == "launch"){
+       	connectToNativeHost(request.message);
+    }
+	return true;
+});
 
 function startNativeApp(){
 	var hostName = 'daycool.native';
 	var port = chrome.runtime.connectNative(hostName);
 }
 
+function runCmd(info){
+
+	var msg = info.selectionText || '';
+	var socket = io.connect('http://localhost:8001');
+	
+	socket.emit('startNativeApp', {type: 'openDos', param: msg});
+
+}
+
+chrome.contextMenus.create({
+	"title": "在命令行运行",
+	"contexts": ["all"],
+	"onclick": runCmd
+});
+
 chrome.contextMenus.create({
 	"title": "启动本地程序      (Alt+N)",
 	"contexts": ["all"],
 	"onclick": startNativeApp
 });
+
 chrome.contextMenus.create({
 	"title": "清除缓存      (Alt+C)",
 	"contexts": ["all"],

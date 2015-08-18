@@ -1,0 +1,14 @@
+{
+  "name": "rightMenu",
+  "version": "1.0.0",
+  "author": "daycool",
+  "description": "chrome extension",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "socket.io": "~1.3.6"
+  },
+  "devDependencies": {}
+}
