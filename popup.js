@@ -29,6 +29,18 @@ $(function() {
 		socket.emit('startNativeApp', {type: 'productOnline'});
 	});
 
+	$('#create-component').click(function() {
+		$(this).siblings('ul').removeClass('hide');
+	});
+
+	$('#create-component-sms').click(function() {
+		socket.emit('startNativeApp', {type: 'createComponentSms'});
+	});
+	
+	$('#create-component-oms').click(function() {
+		socket.emit('startNativeApp', {type: 'createComponentOms'});
+	});	
+
 	socket.on('news', function(data) {
 		console.log(data);
 	});

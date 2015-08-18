@@ -14,10 +14,17 @@
 </head>
 <body id="my-body">
 	<ul class="list-unstyled actions">
-	  <li><a id="open-document" class="btn btn-primary">打开文档</a></li>
-	  <li><a id="open-dos" class="btn btn-info">打开命令行</a></li>
 	  <li><a id="test-online" class="btn btn-warning">测试上线</a></li>
 	  <li><a id="product-online" class="btn btn-danger">产品上线</a></li>
+	  <li><a id="open-document" class="btn btn-primary">打开文档</a></li>
+	  <li><a id="open-dos" class="btn btn-info">打开命令行</a></li>
+	  <li>
+	  	<a id="create-component" class="btn btn-info">创建组件</a>
+	  	<ul class="list-unstyled actions hide">
+		  <li><a id="create-component-sms" class="btn btn-info">创建SMS组件</a></li>
+		  <li><a id="create-component-oms" class="btn btn-info">创建OMS组件</a></li>
+	  	</ul>
+	  </li>
 	</ul>
 
 <script src="popup.js"></script>

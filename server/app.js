@@ -21,10 +21,14 @@ io.on('connection', function(socket) {
 		}else if(data.type == 'openDocument'){
             cmd = 'start D:/weimi/文档';
 		}else if(data.type == 'openDos'){
-			cmd = 'D:/my/chromePlugin/rightMenu/cmdInRun.vbs';
+			cmd = 'D:/my/chromePlugin/rightMenu/cmds/cmdInRun.vbs';
 			if(data.param){
 				cmd += ' "' + data.param + '"';
 			}
+		}else if(data.type == 'createComponentSms'){
+			cmd = 'D:/my/chromePlugin/rightMenu/cmds/createComponentSMS.vbs';
+		}else if(data.type == 'createComponentOms'){
+			cmd = 'D:/my/chromePlugin/rightMenu/cmds/createComponentOMS.vbs';
 		}
         runNative(cmd);
 	});
