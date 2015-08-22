@@ -15,9 +15,9 @@ io.on('connection', function(socket) {
 	socket.on('startNativeApp', function(data) {
 		var cmd = '';
 		if(data.type == 'testOnline'){
-			cmd = 'D:/weimi/git/uedtools.git/autoCmd/testOnline.exe';
+			cmd = 'D:/my/chromePlugin/rightMenu/cmds/testOnline.vbs';
 		}else if(data.type == 'productOnline'){
-            cmd = 'D:/weimi/git/uedtools.git/autoCmd/productOnline.exe';
+            cmd = 'D:/my/chromePlugin/rightMenu/cmds/productOnline.vbs';
 		}else if(data.type == 'openDocument'){
             cmd = 'start D:/weimi/文档';
 		}else if(data.type == 'openDos'){
