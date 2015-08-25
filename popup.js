@@ -1,13 +1,8 @@
-function invoke() {
+function start() {
 	var hostName = "daycool.native";
 	var app = chrome.runtime.connectNative(hostName);
-	app.postMessage('AltRun');
+	// app.postMessage('AltRun');
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-	document.querySelector('#button1').addEventListener(
-		'click', invoke);
-});
 
 $(function() {
 
@@ -39,6 +34,10 @@ $(function() {
 	
 	$('#create-component-oms').click(function() {
 		socket.emit('startNativeApp', {type: 'createComponentOms'});
+	});	
+
+	$('#start').click(function() {
+		start();
 	});	
 
 	socket.on('news', function(data) {

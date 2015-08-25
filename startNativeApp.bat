@@ -1,1 +1,1 @@
-notepad.exe
+start D:/my/chromePlugin/rightMenu/cmds/start.vbs
