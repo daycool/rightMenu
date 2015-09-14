@@ -1,0 +1,14 @@
+{
+	"AppPath": "C:/Windows/System32/cmd.exe",
+	"sleep": 200,
+	"cmds": [
+		{"cmd": "d:"}, 
+		{"cmd": "cd D:/Program Files (x86)/Git/bin/"}, 
+		{"cmd": "sh.exe --login -i"},
+		{"cmd": "ssh daycool@1.1.1.1"},
+		{"cmd": "117299", "isPrompt": true, "title": "please input google verification code"},
+		{"cmd": "123456"},
+		{"cmd": "ssh -i daycool.rsa daycool@1.1.1.1"},
+		{"cmd": "sudo su -"}
+	]
+}
