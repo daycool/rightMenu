@@ -37,5 +37,17 @@
 			},
 			"description": "启动本地程序"
 		}
-	}
+	},
+	"content_scripts": [
+		{
+			"matches": ["http://*/*", "*://*/*"],
+			"js": [
+				"libs/jquery-2.1.4.min.js", 
+				"scripts/content.js"
+			],
+			"css": [
+
+			]
+		}
+	]
 } 

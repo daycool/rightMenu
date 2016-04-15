@@ -144,3 +144,21 @@ chrome.commands.onCommand.addListener(function(command) {
 		startNativeApp();
 	}
 });
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+
+	if(request.type == "copyInputValue"){
+		document.addEventListener('copy', function (ev) {
+		    ev.preventDefault();
+		    ev.clipboardData.setData("text/plain", request.data.value);
+		    
+	  	}, true);
+	  	document.execCommand("copy");
+
+		sendResponse({
+			code: 200,
+			status: "copy OK"
+		});
+		
+	}
+});
