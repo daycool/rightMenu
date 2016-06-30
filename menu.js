@@ -131,6 +131,19 @@ chrome.contextMenus.create({
 	"contexts": ["link", "frame"],
 	"onclick": copyMethodName
 });
+chrome.contextMenus.create({
+	"title": "选择隐藏元素",
+	"contexts": ["all"],
+	"onclick": function(info, tab){
+		console.log(arguments)
+			
+		chrome.tabs.sendMessage(tab.id, {type: 'selectElem'}, function(response) { 
+	        console.log(response)
+							 
+	    });
+
+	}
+});
 
 chrome.commands.onCommand.addListener(function(command) {
 	console.log('Command:', command);
