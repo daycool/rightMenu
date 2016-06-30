@@ -13,12 +13,14 @@ $(document).mousedown(function(e){
 	}
 });
 
-$(document).on('keypress', function(e){
+$(document).on('keydown', function(e){
 	var elem = e.target;
-	if(e.key == 'h' && isSelectElem){
+	if(!e.altKey && e.key == 'h' && isSelectElem){
 		if(hideElem){
 			$(hideElem).hide();
 		}
+	}else if(e.altKey && e.key == 'h'){
+		isSelectElem = !isSelectElem;
 	}
 });
 
