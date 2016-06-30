@@ -21,6 +21,9 @@ $(document).on('keydown', function(e){
 		}
 	}else if(e.altKey && e.key == 'h'){
 		isSelectElem = !isSelectElem;
+		if(!isSelectElem && hideElem){
+			cancelElemStyle(hideElem);
+		}
 	}
 });
 
