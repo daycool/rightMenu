@@ -30,39 +30,58 @@ $(document).on('keydown', function(e){
 
 // var isSelectElem = true;
 var thread = null;
-$('*').hover(function(){
+$('body').on('mouseenter', '*', function(e){
 	if(isSelectElem){
+		e.stopPropagation();
 		var $currElem = $(this);
 		cancelSelectThread();
 		
 		thread = setTimeout(function(){
 			thread = null;
 			
-			var originStyle = {
-				border: $currElem.css('border'),
-				// position: $currElem.css('position')
-			};
-			var newStyle = {
-				border: '1px solid red !important',
-				// position: 'relative !important',
-			};
-			var cssText = '';
-			$.each(newStyle, function(key, val){
-				cssText += key + ':' + val + ';';
-			});
-
-			$currElem.css({cssText: cssText});
-			$currElem.data('originStyle', originStyle);
+			addElemStyle($currElem);
 			hideElem = $currElem;
-			cancelElemStyle($currElem.parent());
+			// cancelElemStyle($currElem.parent());
 		}, 150);
-	}
-}, function(){
-	if(isSelectElem){
-		cancelSelectThread();
-		cancelElemStyle(this);
+		
 	}
 });
+
+$('body').on('mouseleave', '*', function(e){
+	if(isSelectElem){
+		e.stopPropagation();
+		var $currElem = $(this);
+		cancelSelectThread();
+		cancelElemStyle($currElem);
+		thread = setTimeout(function(){
+			addElemStyle($currElem.parent());
+		}, 150);
+	}
+});
+
+// $('*').hover(function(){
+// 	if(isSelectElem){
+// 		var $currElem = $(this);
+// 		cancelSelectThread();
+		
+// 		thread = setTimeout(function(){
+// 			thread = null;
+			
+// 			addElemStyle($currElem);
+// 			hideElem = $currElem;
+// 			// cancelElemStyle($currElem.parent());
+// 		}, 150);
+// 	}
+// }, function(){
+// 	if(isSelectElem){
+// 		var $currElem = $(this);
+// 		cancelSelectThread();
+// 		cancelElemStyle($currElem);
+// 		thread = setTimeout(function(){
+// 			addElemStyle($currElem.parent());
+// 		}, 150);
+// 	}
+// });
 
 function cancelSelectThread(){
 	if(thread){
@@ -70,6 +89,25 @@ function cancelSelectThread(){
 		clearTimeout(thread);
 		thread = null;
 	}
+}
+
+function addElemStyle(currElem){
+	var $currElem = $(currElem);
+	var originStyle = {
+		outline: $currElem.css('outline'),
+	};
+	var newStyle = {
+		outline: '1px solid red !important',
+	};
+	var cssText = '';
+	$.each(newStyle, function(key, val){
+		cssText += key + ':' + val + ';';
+	});
+
+	$currElem.css({cssText: cssText});
+	$currElem.data('originStyle', originStyle);
+
+	cancelElemStyle($currElem.parent());
 }
 
 function cancelElemStyle(currElem){
