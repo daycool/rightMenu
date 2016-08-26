@@ -55,9 +55,17 @@ $('body').on('mouseleave', '*', function(e){
 		cancelElemStyle($currElem);
 		thread = setTimeout(function(){
 			addElemStyle($currElem.parent());
-		}, 150);
+		}, 50);
 	}
 });
+
+$('body').on('click', '*', function(e){
+	if(isSelectElem){
+		console.log('来做点什么吧')
+	}
+});
+
+
 
 // $('*').hover(function(){
 // 	if(isSelectElem){
