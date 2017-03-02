@@ -1,5 +1,6 @@
 var isSelectElem = false;
 var hideElem = null;
+var storage = chrome.storage.local;	
 
 //复制input内容，一般用来复制密码框
 $(document).mousedown(function(e){
@@ -141,3 +142,45 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		});
 	}
 });	
+
+storage.get('dict', function(e){
+	if(e && e.dict){
+		var content = document.body.innerText;
+		var dictWordMap = e.dict.dictWord;
+		var nowWordMap = pageContentWordMap(content);
+		var unknowWordMap = getUnknowWord(dictWordMap, nowWordMap);
+		storage.set({dict:
+			{
+				dictWord: dictWordMap,
+				unknowWord: unknowWordMap
+			}
+		});
+	}
+});
+
+
+function pageContentWordMap(pageContent){
+	var wordReg = /([a-zA-Z]){3,}/ig;
+	var map = {};
+	pageContent = (pageContent || '').toLocaleLowerCase();
+	var matches = pageContent.match(wordReg);
+
+	$.each(matches, function(_, word){
+		map[word] = word;
+	});
+
+	return map;
+}
+
+function getUnknowWord(knowWordMap, nowWordMap){
+	var unknowWord = {};
+
+	$.each(nowWordMap, function(key, val){
+		if(!knowWordMap[key]){
+			unknowWord[key] = key;
+		}
+	});
+
+	return unknowWord;
+}
+

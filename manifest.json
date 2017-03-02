@@ -2,7 +2,14 @@
 	"name": "天凉右键", 
 	"description": "天凉右键", 
 	"version": "0.1", 
-	"permissions": ["contextMenus", "browsingData", "commands", "nativeMessaging"], 
+	"permissions": [
+		"contextMenus", 
+		"browsingData", 
+		"commands", 
+		"nativeMessaging",
+		"storage",
+		"http://dict.youdao.com/"
+	], 
 	"background": { 
 		"scripts": ["menu.js", "libs/socket.io-1.3.6.js"]
 	}, 
